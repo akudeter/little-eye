@@ -103,6 +103,7 @@ async def help(ctx):
     em.add_field(name = "``shutdown``", value = "to shutdown ur computer")
     em.add_field(name = "``usbinfo``", value = "to show usb connect")
     em.add_field(name = "``play``", value = "open website")
+    em.set_image(url = "https://cdn.discordapp.com/attachments/944934076337492003/946149611867885649/creepy-eye-creepy.gif")
     await ctx.send(embed = em)
 @bot.command()
 async def usbinfo(ctx):
